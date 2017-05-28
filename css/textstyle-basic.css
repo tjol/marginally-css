@@ -1,0 +1,114 @@
+/*
+    Copyright (C) 2017 Thomas Jollans
+
+    This file is part of Marginally-CSS.
+
+    Marginally-CSS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Marginally-CSS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Marginally-CSS.  If not, see <http://www.gnu.org/licenses/>.
+
+    Additional permissions under GNU GPL version 3 section 7
+
+    You may convey source or non-source forms of the covered work without the
+    copies of the GNU GPL and GNU LGPL normally required by section 4 of the
+    GNU GPL and/or section 4 of the GNU LGPL, provided you include this license
+    notice.
+
+    You may combine this library with citeproc-js (or a modified version of that
+    library), containing parts which are covered by the terms of the Common
+    Public Attribution License (CPAL), and convey the resulting work without
+    providing the uncombined version of the library normally required by section
+    5(a) of the GNU LGPL.
+*/
+
+
+html {
+    background: white;
+    color: black;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-weight: bold;
+    font-style: normal;
+    text-align: left;
+}
+
+h3 {
+    font-weight: bold;
+    font-style: italic;
+    text-align: left;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+blockquote > footer {
+    font-style: normal;
+}
+
+figure > figcaption {
+    font-style: italic;
+}
+
+aside {
+    color: #222;
+}
+
+code, tt, pre {
+    font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Menlo', monospace;
+    background-color: #f0f0f0;
+    font-size: 0.875em;
+    line-height: 1.7143em;
+}
+
+code, tt, .highlight {
+    padding: 0 0.25em;
+    border-radius: 0.25em;
+}
+
+pre > code {
+    padding: 0;
+    border-radius: 0;
+}
+
+pre {
+    overflow: auto;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    text-align: left;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #0000dd;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*a:visited {
+    color: #6600cc;
+}*/
+
+a:hover, a:active {
+    text-decoration: underline;
+
+}
+

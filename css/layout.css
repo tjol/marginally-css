@@ -1,0 +1,330 @@
+/*
+    Copyright (C) 2017 Thomas Jollans
+
+    This file is part of Marginally-CSS.
+
+    Marginally-CSS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Marginally-CSS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Marginally-CSS.  If not, see <http://www.gnu.org/licenses/>.
+
+    Additional permissions under GNU GPL version 3 section 7
+
+    You may convey source or non-source forms of the covered work without the
+    copies of the GNU GPL and GNU LGPL normally required by section 4 of the
+    GNU GPL and/or section 4 of the GNU LGPL, provided you include this license
+    notice.
+
+    You may combine this library with citeproc-js (or a modified version of that
+    library), containing parts which are covered by the terms of the Common
+    Public Attribution License (CPAL), and convey the resulting work without
+    providing the uncombined version of the library normally required by section
+    5(a) of the GNU LGPL.
+*/
+
+
+/* The core of the layout is a (typographic) grid,
+   made up of two or three columns of 21.25em, INCLUDING
+   margins of 1em at either side.
+
+   This makes:
+     width: 19.25rem;
+     padding: 0 1rem;
+   or similar.
+
+   The left two columns combine for the main content;
+     width: 40.5rem;
+     padding: 0 1rem;
+
+   The vertical rhythm is formed by a 1.5em line-height.
+
+   This makes the total width of the content, if there
+   are three columns, of 63.75em, i.e.
+   1024px if 1em = 16px.
+
+   Below that, there is only one double-column. If that doesn't
+   fit, it's squashed responsively (and responsibly).
+*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td,figure,figcaption,aside {  
+    margin:0; 
+    padding:0;
+}
+
+body {
+    max-width: 40.5em;
+    padding: 0 1rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.5rem;
+    position: relative;
+    margin-top: 1.5em !important;
+}
+
+body > *, main > *, article > *, section > * {
+    margin-top: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-top: 1.5rem;
+}
+
+h2 {
+    font-size: 1.75em;
+    line-height: 3rem;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25em;
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+p {
+    margin-top: 1.5rem;
+}
+
+aside { /* mobile-first version */
+    margin: 0 1.5rem;
+    margin-top: 1.5rem;
+}
+
+blockquote {
+    margin: 1.5rem 0;
+}
+
+:not(aside) >blockquote {
+    padding: 0 1.5rem;
+}
+
+blockquote > footer {
+    display: block;
+    margin: 1.5rem 0;
+    text-align: right;
+}
+
+figure {
+    margin-top: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure > figcaption {
+    text-align: center;
+    padding: 0 1rem;
+}
+
+figure > :not(figcaption) {
+    text-align: center;
+    max-width: 100%;
+    overflow: auto;
+}
+
+figure > :not(figcaption) > * {
+    margin: 0 auto;
+}
+
+aside.side-only {
+    display: none;
+}
+
+aside,
+figure > figcaption {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+
+aside > :first-child {
+    margin-top: 0;
+}
+
+/* Side figures, (default: in two-column mode) */
+aside > figure {
+    display: flex;
+    width: 41.5rem;
+    margin: 0 -1.5rem;
+}
+
+aside > figure > * {
+    width: 19.25rem;
+    margin-left: 2rem;
+}
+
+aside > figure > :first-child {
+    margin-left: 0;
+}
+
+aside > figure > figcaption {
+    text-align: left;
+    padding: 0;
+}
+
+iframe.video {
+    width: 100%;
+    height: calc(41.5rem / 16 * 9);
+}
+
+aside iframe.video {
+    height: calc(19.25rem / 16 * 9);
+}
+
+ul > li {
+    margin-left: 1.5em;
+}
+
+ol > li {
+    margin-left: 1.5em;
+}
+
+ol > li > ul > li {
+    list-style-type: disc;
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.625em;
+  font-size: 0.875em;
+}
+
+sub { 
+  top: 0.125em; 
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    vertical-align: top;
+    padding: 0 0.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+
+th, 
+table.dataframe td {
+    text-align: center;
+}
+
+table.border {
+    border: none;
+}
+
+table.border tr {
+    line-height: 1.4375rem;
+    border-bottom: 0.0625rem solid black;
+    border-top: 0.0625rem solid black;
+}
+
+table.border tr:first-child {
+    border-top: 0;
+}
+
+table.border thead tr:last-child,
+table.border thead tr:last-child > th,
+table.border thead tr:last-child > td {
+    border-bottom: 0.125rem solid black;
+    line-height: 1.375rem;
+}
+
+table.border tr > td,
+table.border tr > th {
+    line-height: 1.4375rem;
+    border-right: 0.0625rem solid black;;
+}
+
+table.border tr > th:first-child {
+    border-right: 0.125rem solid black;;
+}
+
+table.border tr > td:last-child,
+table.border tr > th:last-child {
+    border-right: 0;
+}
+
+
+#toggle_grid_link {
+    display: block;
+    text-align: center;
+    width: 15rem;
+    position: fixed;
+    top: 0.5rem;
+    right: -4.5rem;
+    transform: rotate(45deg);
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+@media print, screen and (max-width: 42.5em) {
+    #toggle_grid_link {
+        display: none;
+    }
+}
+
+/* Remember the default (no media queries) is two column only!! */
+.three-col, .two-plus-one > :first-child {
+    column-count: 2;
+    column-width: 19.25rem;
+    column-gap: 2rem;
+}
+
+.three-col, .one-plus-two, .two-plus-one, .double-plus-one {
+    clear: both;
+}
+
+.three-col > :first-child,
+.two-plus-one > * > :first-child,
+.one-plus-two > * > :first-child,
+.double-plus-one > * > :first-child {
+    margin-top: 0;
+}
+
+.two-plus-one > :last-child {
+    text-align: center;
+}
+
+.one-plus-two > :first-child {
+    width: 19.25rem;
+    float: left;
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+.flex-columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1rem;
+    margin-top: 0;
+    width: calc(100% + 2rem);
+}
+
+.flex-columns > * {
+    width: 19.25rem;
+    margin: 0 1rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 1.5rem;
+}
+

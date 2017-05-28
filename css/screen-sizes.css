@@ -1,0 +1,231 @@
+/*
+    Copyright (C) 2017 Thomas Jollans
+
+    This file is part of Marginally-CSS.
+
+    Marginally-CSS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Marginally-CSS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Marginally-CSS.  If not, see <http://www.gnu.org/licenses/>.
+
+    Additional permissions under GNU GPL version 3 section 7
+
+    You may convey source or non-source forms of the covered work without the
+    copies of the GNU GPL and GNU LGPL normally required by section 4 of the
+    GNU GPL and/or section 4 of the GNU LGPL, provided you include this license
+    notice.
+
+    You may combine this library with citeproc-js (or a modified version of that
+    library), containing parts which are covered by the terms of the Common
+    Public Attribution License (CPAL), and convey the resulting work without
+    providing the uncombined version of the library normally required by section
+    5(a) of the GNU LGPL.
+*/
+
+@media screen and (max-width: 63.75em) {
+    /* Three columns no longer fit. Center the body text! */
+    body {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 42.5em) {
+    /* We have ≤ 1em margins left!
+       Let's expand some images into those margins */
+
+    figure > div,
+    body > img, body > p > img,
+    article > img, article > p > img,
+    section > img, section > p > img {
+        margin: 0 -1rem !important;
+        max-width: calc(100% + 2rem);
+    }
+
+    figure > div > * {
+        margin: 0 1em;
+    }
+
+    figure > div > img,
+    figure > div > video,
+    figure > div > iframe {
+        margin: 0;
+    }
+
+    /* Also: this is where two-column objects in the body
+       no longer work */
+
+    /* Side figures*/
+    aside > figure {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    aside > figure > * {
+        width: auto;
+        margin-left: 0;
+    }
+
+    aside > figure > figcaption {
+        text-align: center;
+        padding: 0 1em;
+    }
+
+    .one-plus-two > :first-child {
+        max-width: 19.25rem;
+        float: none;
+        text-align: center;
+        margin: auto;
+    }
+
+
+}
+
+@media screen and (min-width: 63.75em), print {
+
+    html {
+        padding-left: calc(50% - 31.875em);
+    }
+
+    body {
+        margin: 0;
+    }
+
+    aside.side-only {
+        display: block;
+    }
+    
+    figure {
+        display: flex;
+        width: 61.75rem;
+        clear: right;
+    }
+
+    figure > :not(figcaption) {
+        width: 40.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    figure > * {
+        margin-left: 2rem;
+    }
+
+    figure > :first-child {
+        margin-left: 0;
+    }
+
+    figure > figcaption {
+        width: 19.25rem;
+        text-align: left;
+        padding: 0;
+    }
+
+    .full-width {
+        width: 61.75rem;
+        max-width: 61.75rem;
+        clear: right;
+    }
+
+    iframe.full-width.video {
+        width: 61.75rem;
+        height: calc(61.75rem / 16 * 9);
+    }
+
+    figure.full-width {
+        display: block;
+    }
+
+    figure.full-width > * {
+        width: auto;
+        margin: 0;
+    }
+
+    aside,
+    figure.full-width > figcaption:last-child {
+        width: 19.25rem;
+        padding: 0;
+        text-align: left;
+        float: right;
+        clear: right;
+        margin-left: 1rem;
+        margin-right: -21.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+    }
+    aside.bottom-here {
+        /*margin-top: -100%;*/
+        transform: translateY(-100%);
+    }
+
+    figure.full-width > figcaption:last-child {
+        margin-right: 0; /* the figure already gets us to the margin */
+        margin-top: 0; /* no gap between caption and figure */
+    }
+
+    /* Side figures*/
+    aside > figure {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    aside > figure > * {
+        width: auto;
+        margin-left: 0;
+    }
+
+    aside > figure > figcaption {
+        text-align: center;
+        padding: 0 1em;
+    }
+
+
+    .three-col {
+        width: 61.75rem;
+        column-count: 3;
+    }
+
+    .two-plus-one, .one-plus-two, .double-plus-one {
+        width: 61.75rem;
+        display: flex;
+    }
+
+    .flex-columns {
+        width: 63.75rem;
+    }
+
+    .two-plus-one > :first-child, .one-plus-two > :last-child {
+        width: 41.5rem;
+        column-count: 2;
+        column-width: 19.25rem;
+        column-gap: 2rem;
+        margin-left: 0;
+    }
+
+    .double-plus-one > :first-child {
+        width: 41.5rem;
+        margin-left: 0;   
+    }
+
+    .two-plus-one > :last-child, .double-plus-one > :last-child {
+        text-align: inherit;
+        width: 19.25rem;
+        margin-left: 2rem;
+    }
+
+    .one-plus-two > :first-child {
+        text-align: inherit;
+        width: 19.25rem;
+        margin-right: 2rem;   
+    }
+
+}

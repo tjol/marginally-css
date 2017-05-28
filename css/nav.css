@@ -1,0 +1,295 @@
+/*
+    Copyright (C) 2017 Thomas Jollans
+
+    This file is part of Marginally-CSS.
+
+    Marginally-CSS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Marginally-CSS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Marginally-CSS.  If not, see <http://www.gnu.org/licenses/>.
+
+    Additional permissions under GNU GPL version 3 section 7
+
+    You may convey source or non-source forms of the covered work without the
+    copies of the GNU GPL and GNU LGPL normally required by section 4 of the
+    GNU GPL and/or section 4 of the GNU LGPL, provided you include this license
+    notice.
+
+    You may combine this library with citeproc-js (or a modified version of that
+    library), containing parts which are covered by the terms of the Common
+    Public Attribution License (CPAL), and convey the resulting work without
+    providing the uncombined version of the library normally required by section
+    5(a) of the GNU LGPL.
+*/
+
+#sidebar {
+    border-top: 0.125rem solid black;
+    padding: 1.5rem 1rem;
+    margin-top: 2.875rem;
+}
+
+@media screen {
+    #sidebar.managed-by-script {
+        display: none;
+    }
+}
+
+#menu-button {
+    
+    background-color: #333;
+    color: #fff;
+    
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border: none;
+    display: block;
+    height: 3rem;
+    width: 3rem;
+
+    border-radius: 0.5rem;
+
+    position: relative;
+    margin-top: 0;
+    margin-left: calc(50% - 50vw - 1rem);
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+
+    float: left;
+
+    box-sizing: content-box;
+
+    text-decoration: none;
+    text-align: center;
+
+}
+
+@media screen and (min-width: 63.75em) {
+    #menu-button {
+        margin-left: calc(30.875rem - 50vw - 1rem);
+    }
+}
+
+#menu-button::after {
+    /*⁝❭❱𝍢⟫⟩▶▸*/
+    content: "❭";
+}
+
+html.sidebar-in-view:not(.animating-sidebar) #menu-button::after,
+html.sidebar-out-of-view.animating-sidebar #menu-button::after {
+    /*⁝❭❱𝍢⟫⟩▶▸*/
+    content: "❬";
+}
+
+
+@keyframes sidebar-in-html {
+    from { padding-left: calc(50vw - 21.25rem); }
+    to { padding-left: 21.25rem; }
+}
+
+@keyframes sidebar-in-sidebar {
+    from { margin-left: calc(50% - 50vw - 21.25rem); }
+    to { margin-left: -21.25rem; }
+}
+
+@keyframes sidebar-in-menu-button {
+    from { margin-left: calc(50% - 50vw - 1rem); }
+    to { margin-left: -2rem; }
+}
+
+@media screen and (min-width: 63.75em) {
+
+    @keyframes sidebar-in-html {
+        from { padding-left: calc(50% - 31.875em); }
+        to { padding-left: 21.25rem; }
+    }
+
+    @keyframes sidebar-in-sidebar {
+        from { margin-left: calc(10.625rem - 50vw); }
+        to { margin-left: -21.25rem; }
+    }
+
+    @keyframes sidebar-in-menu-button {
+        from { margin-left: calc(30.875rem - 50vw - 1rem); }
+        to { margin-left: -2rem; }
+    }
+}
+
+html.sidebar-in-view #sidebar,
+html.sidebar-out-of-view #sidebar {
+    display: block;
+    position: absolute;
+        
+    margin: 0;
+    border: none;
+    
+    /*top: 0;
+    bottom: 1.5rem;
+    left: -21.25em; 
+    padding-left: 1rem;*/
+    
+    top: -1.5rem;
+    bottom: 0;
+    padding: 1.5rem 1rem;
+    margin-left: -21.25rem;
+    padding-left: 1rem;
+    left: 0;
+
+    background-color: #333;
+    color: #fff;
+
+    width: 19.25rem;
+
+}
+
+html.sidebar-in-view.animating-sidebar #sidebar {
+    animation-name: sidebar-in-sidebar;
+    animation-duration: 500ms;
+}
+
+html.sidebar-out-of-view #sidebar {
+    margin-left: calc(50% - 50vw - 21.25rem);
+}
+
+html.sidebar-out-of-view.animating-sidebar #sidebar {
+    animation-name: sidebar-in-sidebar;
+    animation-duration: 500ms;
+    animation-direction: reverse;
+}
+
+html.sidebar-in-view #menu-button {
+    margin-left: -2rem;
+}
+
+html.sidebar-in-view.animating-sidebar #menu-button {
+    animation-name: sidebar-in-menu-button;
+    animation-duration: 500ms;
+}
+
+html.sidebar-out-of-view.animating-sidebar #menu-button {
+    animation-direction: reverse;
+    animation-name: sidebar-in-menu-button;
+    animation-duration: 500ms;
+}
+
+html.sidebar-in-view {
+    padding-left: 21.25rem;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+html.sidebar-in-view.animating-sidebar {
+    animation-name: sidebar-in-html;
+    animation-duration: 500ms;
+}
+
+html.sidebar-out-of-view.animating-sidebar {
+    animation-name: sidebar-in-html;
+    animation-duration: 500ms;   
+    animation-direction: reverse;
+}
+
+@media screen and (max-width: 23.25em) {
+    /* The screen is so narrow that the full-width sidebar + button
+       no longer fit */
+
+    html.sidebar-in-view #sidebar,
+    html.sidebar-out-of-view #sidebar {
+        width: calc(100vw - 4rem);
+    }
+    html.sidebar-in-view #sidebar {
+        margin-left: calc(2rem - 100vw);
+    }
+    html.sidebar-in-view {
+        padding-left: calc(100vw - 2em);
+    }
+
+    @keyframes sidebar-in-html {
+        from { padding-left: calc(50vw - 21.25rem); }
+        to { padding-left: calc(100vw - 2em); }
+    }
+
+    @keyframes sidebar-in-sidebar {
+        from { margin-left: -19.25rem; }
+        to { margin-left: calc(2rem - 100vw); }
+    }
+}
+
+@media print {
+    #menu-button {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 85em) {
+    html {
+        padding-left: calc(50% - 21.25em);
+    }
+
+    #menu-button {
+        display: none;
+    }
+
+    #sidebar {
+        display: block !important;
+        position: absolute;
+        
+        margin: 0;
+        border: none;
+        
+        /*top: 0;
+        bottom: 1.5rem;
+        left: -21.25em; 
+        padding-left: 1rem;*/
+        
+        top: -1.5rem;
+        bottom: 0;
+        padding: 1.5rem 1rem;
+        margin-left: calc(21.25em - 50vw);
+        padding-left: calc(50vw - 41.5em);
+        left: 0;
+
+        background-color: inherit;
+        color: inherit;
+        /*background-color: #444;
+        color: #eee;*/
+
+        width: 19.25rem;
+
+        /*padding-right: 0.9375rem;
+        border-right: 0.125rem solid #448;*/
+        
+    }
+}
+
+@media screen and (min-width: 106.25em) {
+    html {
+        padding-left: calc(50% - 31.875em);
+    }
+}
+
+#sidebar ul#menu {
+    padding: 0.75rem 0;
+}
+
+#sidebar ul#menu > li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 3rem;
+}
+
+#sidebar ul#menu > li a {
+    color: inherit;
+    text-decoration: none;
+}
